@@ -4,9 +4,10 @@ export default function ServicesPage() {
   return (
     <div style={{ 
       fontFamily: "'Segoe UI', sans-serif", 
-      padding: "60px", 
+      padding: "60px 20px", 
       background: "#f8fafc", 
-      minHeight: "100vh" 
+      minHeight: "100vh",
+      width: "100%"
     }}>
       <div style={{ textAlign: "center", marginBottom: 50 }}>
         <div style={{ 

@@ -47,7 +47,9 @@ export const QUICK_LINKS = [
   { label: "🔗 SharePoint", url: "https://sharepoint.com", desc: "Company intranet & docs" },
   { label: "🔗 OneDrive", url: "https://onedrive.com", desc: "Cloud file storage" },
   { label: "🔗 HIS Portal", url: "#", desc: "Hospital Information System" },
-  { label: "🔗 IT Ticket System", url: "#", desc: "Submit support requests" },
+  { label: "🔗 Requesition for stockroom ", url: "http://192.168.1.5:3000/", desc: "Stockroom Requsition System" },
+  { label: "🔗 Requesition for CSR & Pharmacy ", url: "http://192.168.1.7:3000/ ", desc: "CSR & Pharmacy Requsition System"},
+  { label: "🔗 GLPI Ticketing", url: "http://192.168.1.8/front/central.php", desc: "IT Support Ticket System" },
   { label: "🔗 Microsoft 365", url: "https://office.com", desc: "Email, Teams, Office apps" },
   { label: "🔗 Network Monitor", url: "#", desc: "Real-time network status" },
 ];

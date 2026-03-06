@@ -94,21 +94,6 @@ export default function Navbar({ activePage, setActivePage }: NavbarProps) {
         >
           Submit Ticket
         </button>
-        <button 
-          onClick={() => setActivePage("Resources")} 
-          style={{ 
-            background: "#1a56db", 
-            color: "white", 
-            border: "none", 
-            padding: "8px 18px", 
-            borderRadius: 8, 
-            fontWeight: 600, 
-            cursor: "pointer", 
-            fontSize: 14 
-          }}
-        >
-          IT Portal
-        </button>
       </div>
     </nav>
   );

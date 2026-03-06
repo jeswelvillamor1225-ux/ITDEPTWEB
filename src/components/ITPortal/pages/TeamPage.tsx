@@ -4,9 +4,10 @@ export default function TeamPage() {
   return (
     <div style={{ 
       fontFamily: "'Segoe UI', sans-serif", 
-      padding: "60px", 
+      padding: "60px 20px", 
       background: "#f8fafc", 
-      minHeight: "100vh" 
+      minHeight: "100vh",
+      width: "100%"
     }}>
       <div style={{ textAlign: "center", marginBottom: 50 }}>
         <div style={{ 
@@ -37,7 +38,7 @@ export default function TeamPage() {
       </div>
 
       {/* Org Chart Container */}
-      <div style={{ maxWidth: 1200, margin: "0 auto" }}>
+      <div style={{ width: "100%", margin: "0 auto" }}>
         
         {/* Row 1: IT Manager */}
         <div style={{ 
@@ -77,13 +78,14 @@ export default function TeamPage() {
                   src={TEAM_MEMBERS[0].image} 
                   alt={TEAM_MEMBERS[0].name}
                   style={{ 
-                    width: "100%", 
-                    height: "100%", 
+                    width: "120%", 
+                    height: "120%", 
                     objectFit: "cover",
+                    objectPosition: "center top",
                     borderRadius: "50%",
                     position: "absolute",
-                    top: 0,
-                    left: 0
+                    top: "-10%",
+                    left: "-10%"
                   }}
                 />
               ) : (
@@ -154,13 +156,14 @@ export default function TeamPage() {
                   src={TEAM_MEMBERS[1].image} 
                   alt={TEAM_MEMBERS[1].name}
                   style={{ 
-                    width: "100%", 
-                    height: "100%", 
+                    width: "120%", 
+                    height: "120%", 
                     objectFit: "cover",
+                    objectPosition: "center top",
                     borderRadius: "50%",
                     position: "absolute",
-                    top: 0,
-                    left: 0
+                    top: "-10%",
+                    left: "-10%"
                   }}
                 />
               ) : (
@@ -234,13 +237,14 @@ export default function TeamPage() {
                     src={member.image} 
                     alt={member.name}
                     style={{ 
-                      width: "100%", 
-                      height: "100%", 
+                      width: "120%", 
+                      height: "120%", 
                       objectFit: "cover",
+                      objectPosition: "center top",
                       borderRadius: "50%",
                       position: "absolute",
-                      top: 0,
-                      left: 0
+                      top: "-10%",
+                      left: "-10%"
                     }}
                   />
                 ) : (
@@ -327,13 +331,14 @@ export default function TeamPage() {
                     src={student.image} 
                     alt={student.name}
                     style={{ 
-                      width: "100%", 
-                      height: "100%", 
+                      width: "120%", 
+                      height: "120%", 
                       objectFit: "cover",
+                      objectPosition: "center top",
                       borderRadius: "50%",
                       position: "absolute",
-                      top: 0,
-                      left: 0
+                      top: "-10%",
+                      left: "-10%"
                     }}
                   />
                 ) : (
