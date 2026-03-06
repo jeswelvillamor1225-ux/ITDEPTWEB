@@ -1,13 +1,29 @@
+import { useState, useEffect } from "react";
 import { TEAM_MEMBERS, OJT_STUDENTS } from "../constants";
 
 export default function TeamPage() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
   return (
     <div style={{ 
       fontFamily: "'Segoe UI', sans-serif", 
-      padding: "60px 20px", 
-      background: "#f8fafc", 
-      minHeight: "100vh",
-      width: "100%"
+      padding: isMobile ? "40px 20px" : "60px 20px", 
+      background: "#0f7eec", 
+      height: "100%",
+      width: "100%",
+      overflow: "auto",
+      minWidth: 0,
+      maxWidth: "100%",
+      boxSizing: "border-box"
     }}>
       <div style={{ textAlign: "center", marginBottom: 50 }}>
         <div style={{ 

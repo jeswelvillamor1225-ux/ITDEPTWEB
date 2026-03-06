@@ -16,25 +16,24 @@ export default function Navbar({ activePage, setActivePage }: NavbarProps) {
       display: "flex", 
       alignItems: "center", 
       justifyContent: "space-between", 
-      padding: "0 32px", 
+      padding: "0 16px", 
       height: 64, 
-      fontFamily: "'Segoe UI', sans-serif" 
+      fontFamily: "'Segoe UI', sans-serif",
+      width: "100%",
+      boxSizing: "border-box",
+      minWidth: 0
     }}>
       <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
-        <div style={{ 
-          background: "#1a56db", 
-          borderRadius: 10, 
-          width: 38, 
-          height: 38, 
-          display: "flex", 
-          alignItems: "center", 
-          justifyContent: "center", 
-          color: "white", 
-          fontWeight: 900, 
-          fontSize: 18 
-        }}>
-          V
-        </div>
+        <img 
+          src="/logo.png" 
+          alt="VISAYASMED HOSPITAL Logo"
+          style={{ 
+            width: 38, 
+            height: 38, 
+            borderRadius: 8,
+            objectFit: "contain"
+          }}
+        />
         <div>
           <div style={{ 
             fontWeight: 800, 
@@ -42,7 +41,7 @@ export default function Navbar({ activePage, setActivePage }: NavbarProps) {
             color: "#1a1a2e", 
             letterSpacing: 1 
           }}>
-            VISMED
+            VISAYASMED HOSPITAL
           </div>
           <div style={{ 
             fontSize: 10, 

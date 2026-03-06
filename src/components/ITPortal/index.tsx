@@ -41,6 +41,7 @@ export default function ITPortal() {
 
   return (
     <div style={{ 
+      width: "100%", 
       minHeight: "100vh", 
       background: `
         linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%),
@@ -60,7 +61,11 @@ export default function ITPortal() {
         )
       `,
       position: "relative",
-      overflow: "hidden"
+      margin: 0,
+      padding: 0,
+      display: "flex",
+      flexDirection: "column",
+      boxSizing: "border-box"
     }}>
       {/* Animated code background */}
       <div style={{
@@ -86,9 +91,14 @@ export default function ITPortal() {
         animation: "matrix 15s linear infinite",
       }} />
 
-      <div style={{ position: "relative", zIndex: 1, maxWidth: "100%" }}>
+      <div style={{ position: "relative", zIndex: 1, width: "100%", display: "flex", flexDirection: "column", minHeight: "100vh" }}>
         <Navbar activePage={activePage} setActivePage={setActivePage} />
-        <main style={{ minHeight: "calc(100vh - 64px)" }}>
+        <main style={{ 
+          flex: 1, 
+          width: "100%",
+          overflowY: "auto",
+          overflowX: "hidden"
+        }}>
           {renderPage()}
         </main>
         <Footer />

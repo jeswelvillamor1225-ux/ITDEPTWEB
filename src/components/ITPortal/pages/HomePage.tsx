@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { GENERAL_REQUIREMENTS, QUICK_LINKS } from "../constants";
 
 interface HomePageProps {
@@ -7,7 +7,18 @@ interface HomePageProps {
 
 export default function HomePage({ setActivePage }: HomePageProps) {
   const [currentPhotoIndex, setCurrentPhotoIndex] = useState(0);
-  
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const photos = [
     { id: 1, title: "Slide 1", description: "VisayasMed Presentation for New Employees - Introduction", image: "/VisayasMed Presentation for New Employees/Slide1.PNG" },
     { id: 2, title: "Slide 2", description: "VisayasMed Presentation for New Employees - Overview", image: "/VisayasMed Presentation for New Employees/Slide2.PNG" },
@@ -28,16 +39,25 @@ export default function HomePage({ setActivePage }: HomePageProps) {
   };
 
   return (
-    <div style={{ fontFamily: "'Segoe UI', sans-serif", width: "100%" }}>
+    <div style={{ 
+      width: "100%", 
+      background: "linear-gradient(135deg, #1e293b 0%, #334155 100%)",
+      display: "flex",
+      flexDirection: "column",
+      boxSizing: "border-box",
+      margin: 0,
+      padding: 0
+    }}>
       {/* Hero */}
       <div style={{ 
         background: "linear-gradient(135deg, #0f2c6f 0%, #1a56db 60%, #3b82f6 100%)", 
         color: "white", 
-        padding: "80px 20px 100px", 
+        padding: isMobile ? "40px 20px 60px" : "80px 20px 100px", 
         textAlign: "center", 
         position: "relative", 
         overflow: "hidden",
-        width: "100%"
+        width: "100%",
+        margin: 0
       }}>
         <div style={{ 
           position: "absolute", 
@@ -89,7 +109,7 @@ export default function HomePage({ setActivePage }: HomePageProps) {
         </p>
         <div style={{ 
           display: "flex", 
-          gap: 16, 
+          gap: "20px", 
           justifyContent: "center", 
           flexWrap: "wrap" 
         }}>
@@ -99,12 +119,14 @@ export default function HomePage({ setActivePage }: HomePageProps) {
               background: "white", 
               color: "#1a56db", 
               border: "none", 
-              padding: "14px 32px", 
-              borderRadius: 10, 
+              padding: "18px 40px", 
+              borderRadius: 12, 
               fontWeight: 700, 
-              fontSize: 16, 
+              fontSize: 18, 
               cursor: "pointer", 
-              boxShadow: "0 4px 20px rgba(0,0,0,0.15)" 
+              boxShadow: "0 6px 25px rgba(0,0,0,0.2)",
+              transition: "all 0.3s ease",
+              minWidth: "200px"
             }}
           >
             🎫 Submit a Ticket
@@ -114,12 +136,15 @@ export default function HomePage({ setActivePage }: HomePageProps) {
             style={{ 
               background: "rgba(255,255,255,0.15)", 
               color: "white", 
-              border: "1.5px solid rgba(255,255,255,0.4)", 
-              padding: "14px 32px", 
-              borderRadius: 10, 
+              border: "2px solid rgba(255,255,255,0.5)", 
+              padding: "18px 40px", 
+              borderRadius: 12, 
               fontWeight: 700, 
-              fontSize: 16, 
-              cursor: "pointer" 
+              fontSize: 18, 
+              cursor: "pointer",
+              transition: "all 0.3s ease",
+              backdropFilter: "blur(10px)",
+              minWidth: "200px"
             }}
           >
             View Services →
@@ -128,8 +153,8 @@ export default function HomePage({ setActivePage }: HomePageProps) {
       </div>
 
       {/* Quick Access Cards */}
-      <div style={{ background: "#f8fafc", padding: "60px 20px 40px", width: "100%" }}>
-        <div style={{ textAlign: "center", marginBottom: 40 }}>
+      <div style={{ background: "#2da8ce", padding: "60px 0 40px", width: "100%" }}>
+        <div style={{ textAlign: "center", marginBottom: 80 }}>
           <div style={{ 
             color: "#1a56db", 
             fontWeight: 700, 
@@ -151,19 +176,24 @@ export default function HomePage({ setActivePage }: HomePageProps) {
         </div>
         <div style={{ 
           display: "grid", 
-          gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))", 
-          gap: 20, 
-          width: "100%"
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(200px, 1fr))", 
+          gap: 10, 
+          width: "100%",
+          maxWidth: "100%",
+          minWidth: 0,
+          boxSizing: "border-box",
+          padding: isMobile ? "0 10px" : "0 20px",
+          margin: "0 auto"
         }}>
           {QUICK_LINKS.map(link => (
             <button 
               key={link.label} 
               onClick={() => window.open(link.url, '_blank')}
               style={{ 
-                background: "#fef9c3", 
+                background: "#06dd83", 
                 border: "none", 
-                borderRadius: 14, 
-                padding: "28px 24px", 
+                borderRadius: 10, 
+                padding: "10px 8px", 
                 textAlign: "left", 
                 cursor: "pointer", 
                 transition: "transform 0.2s, box-shadow 0.2s", 
@@ -178,14 +208,15 @@ export default function HomePage({ setActivePage }: HomePageProps) {
                 e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.06)"; 
               }}
             >
-              <div style={{ fontSize: 32, marginBottom: 10 }}>{link.label}</div>
+              <div style={{ fontSize: 24, marginBottom: 8, textAlign: "center" }}>{link.label.split(' ')[0]}</div>
               <div style={{ 
                 fontWeight: 700, 
-                fontSize: 15, 
+                fontSize: 13, 
                 color: "#1a1a2e", 
-                marginBottom: 4 
+                marginBottom: 4,
+                textAlign: "center"
               }}>
-                {link.label}
+                {link.label.split(' ').slice(1).join(' ')}
               </div>
               <div style={{ 
                 fontSize: 13, 
@@ -203,7 +234,7 @@ export default function HomePage({ setActivePage }: HomePageProps) {
       <div style={{ 
         background: "#1a56db", 
         color: "white", 
-        padding: "40px 20px", 
+        padding: "40px 0", 
         display: "flex", 
         justifyContent: "space-around", 
         gap: 40,
@@ -237,7 +268,7 @@ export default function HomePage({ setActivePage }: HomePageProps) {
 
       {/* General Requirements Preview */}
       <div style={{ 
-        padding: "60px 20px", 
+        padding: "60px 0", 
         background: "white",
         width: "100%"
       }}>
@@ -270,14 +301,18 @@ export default function HomePage({ setActivePage }: HomePageProps) {
         </div>
         <div style={{ 
           display: "grid", 
-          gridTemplateColumns: "repeat(3, 1fr)", 
+          gridTemplateColumns: isMobile ? "1fr" : "repeat(auto-fit, minmax(250px, 1fr))", 
           gap: 16, 
-          maxWidth: 960, 
+          width: "100%",
+          maxWidth: "100%",
+          minWidth: 0,
+          boxSizing: "border-box",
+          padding: isMobile ? "0 10px" : "0 20px",
           margin: "0 auto 32px" 
         }}>
           {GENERAL_REQUIREMENTS.slice(0, 6).map(req => (
             <div key={req.num} style={{ 
-              background: "#f8fafc", 
+              background: "#3cb3eb", 
               borderRadius: 12, 
               padding: "20px 22px", 
               display: "flex", 
@@ -328,12 +363,16 @@ export default function HomePage({ setActivePage }: HomePageProps) {
       {/* Photo Album Section */}
       <div style={{ 
         background: "#1a1a2e", 
-        padding: "80px 20px", 
+        padding: "80px 0", 
         textAlign: "center",
-        width: "100%"
+        width: "100vw",
+        minWidth: 0,
+        margin: 0,
+        left: 0,
+        right: 0
       }}>
         <div style={{ 
-          color: "#ffffff", 
+          color: "#1d5a94", 
           fontWeight: 700, 
           fontSize: 12, 
           letterSpacing: 3, 
@@ -345,13 +384,13 @@ export default function HomePage({ setActivePage }: HomePageProps) {
         <h2 style={{ 
           fontSize: 38, 
           fontWeight: 900, 
-          color: "#ffffff", 
+          color: "#0a3fd1", 
           margin: "0 0 16px" 
         }}>
           IT Department Activities
         </h2>
         <p style={{ 
-          color: "#9ca3af", 
+          color: "#42abe7", 
           maxWidth: 500, 
           margin: "0 auto 60px", 
           fontSize: 16,
@@ -362,7 +401,8 @@ export default function HomePage({ setActivePage }: HomePageProps) {
 
         {/* Photo Album */}
         <div style={{ 
-          maxWidth: 900, 
+          width: "100%", 
+          maxWidth: "none", 
           margin: "0 auto", 
           position: "relative"
         }}>
@@ -394,9 +434,11 @@ export default function HomePage({ setActivePage }: HomePageProps) {
           {/* Navigation Buttons */}
           <div style={{ 
             display: "flex", 
-            justifyContent: "space-between", 
+            justifyContent: "center", 
             alignItems: "center",
-            position: "relative"
+            position: "relative",
+            padding: "0 20px",
+            gap: "20px"
           }}>
             <button 
               onClick={prevPhoto}
@@ -412,7 +454,8 @@ export default function HomePage({ setActivePage }: HomePageProps) {
                 display: "flex",
                 alignItems: "center",
                 gap: 8,
-                transition: "all 0.2s"
+                transition: "all 0.2s",
+                margin: "0 10px"
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.background = "#2563eb";
@@ -462,8 +505,9 @@ export default function HomePage({ setActivePage }: HomePageProps) {
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
-                gap: 8,
-                transition: "all 0.2s"
+                gap: 5,
+                transition: "all 0.2s",
+                margin: "0 10px"
               }}
               onMouseEnter={e => {
                 e.currentTarget.style.background = "#2563eb";

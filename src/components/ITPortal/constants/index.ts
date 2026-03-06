@@ -44,14 +44,13 @@ export const DOCS_GALLERY = [
 ];
 
 export const QUICK_LINKS = [
-  { label: "🔗 SharePoint", url: "https://sharepoint.com", desc: "Company intranet & docs" },
   { label: "🔗 OneDrive", url: "https://onedrive.com", desc: "Cloud file storage" },
-  { label: "🔗 HIS Portal", url: "#", desc: "Hospital Information System" },
+  { label: "🔗 VisayasMed Hospital", url: "#", desc: "Hospital Information System" },
   { label: "🔗 Requesition for stockroom ", url: "http://192.168.1.5:3000/", desc: "Stockroom Requsition System" },
   { label: "🔗 Requesition for CSR & Pharmacy ", url: "http://192.168.1.7:3000/ ", desc: "CSR & Pharmacy Requsition System"},
   { label: "🔗 GLPI Ticketing", url: "http://192.168.1.8/front/central.php", desc: "IT Support Ticket System" },
-  { label: "🔗 Microsoft 365", url: "https://office.com", desc: "Email, Teams, Office apps" },
-  { label: "🔗 Network Monitor", url: "#", desc: "Real-time network status" },
+  { label: "🔗 Accounting Forms", url: "http://192.168.1.10:3000/", desc: "Accounting Forms" },
+  { label: "🔗 HRD System", url: "https://visayasmed-hr-system-91bad.web.app/", desc: "For HRD Application Form For Applicants" },
 ];
 
 export const ANNOUNCEMENTS = [
@@ -138,10 +137,10 @@ export const OJT_STUDENTS = [
 ];
 
 export const CONTACT_INFO = [
-  { icon: "📞", label: "Phone", value: "Local 200 / 201", desc: "IT Helpdesk Direct Line" },
+  { icon: "📞", label: "Phone", value: "Local 297", desc: "IT Helpdesk Direct Line" },
   { icon: "📧", label: "Email", value: "it@visayasmed.com", desc: "For non-urgent requests" },
-  { icon: "📍", label: "Location", value: "IT Department, 2nd Floor", desc: "Main Hospital Building" },
-  { icon: "🕐", label: "Hours", value: "Mon–Sat, 7AM–8PM", desc: "Emergency: 24/7" },
+  { icon: "📍", label: "Location", value: "IT Department, 1st Floor", desc: "Main Hospital Building" },
+  { icon: "🕐", label: "Hours", value: "Mon–Sat, 8AM–5PM", desc: "Emergency: 24/7" },
 ];
 
 export const SAMPLE_FILES = [

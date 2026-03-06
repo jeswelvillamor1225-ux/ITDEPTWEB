@@ -6,9 +6,9 @@ export default function Footer() {
       textAlign: "center", 
       padding: "24px", 
       fontFamily: "'Segoe UI', sans-serif", 
-      fontSize: 13 
+      fontSize: 15 
     }}>
-      © 2026 VISAYASMED Hospital — IT Department · All rights reserved
+      2026 VISAYASMED HOSPITAL — IT Department · All rights reserved
     </footer>
   );
 }
